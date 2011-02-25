@@ -1,3 +1,6 @@
 development:
   api:
     google: ABQIAAAA9rWAXwsosqg0R8Lfc9vBnhTJQa0g3IQ9GZqIMmInSLzwtGDKaBTQ7nIj8VvdVz64uIk2xb3LT1egWg # localhost:3000
+production:
+  api:
+    google: ABQIAAAA9rWAXwsosqg0R8Lfc9vBnhQWu2HPJdxeVhAB7gD0OqnyZmxTExS76XJGV1EQ57mMotdMgEoDRakYag # werstreikt.heroku.com
