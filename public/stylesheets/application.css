@@ -1,0 +1,24 @@
+.clearer{
+  clear: both;
+}
+
+.w100{
+  width: 100%;
+}
+
+table.top_aligned td{
+  vertical-align: top;
+}
+
+#title{
+  font-family: Verdana, sans-serif;
+  font-size: 100px;
+  line-height: 100px;
+  text-shadow: -3px 0 4px red;
+  color: #d12;
+  margin-bottom: 20px;
+}
+
+#feed_entries td{
+  padding-bottom: 20px;
+}

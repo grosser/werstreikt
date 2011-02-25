@@ -2,15 +2,18 @@
 <html>
 <head>
   <title>Wer streikt?</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
+<div id="title">Wer streikt!?</div>
+
 <%= yield %>
 
-<%= javascript_include_tag 'rails' %>
 <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' %>
+<%= javascript_include_tag 'rails', 'application', :cache => true %>
+<%= yield :js %>
 
 </body>
 </html>

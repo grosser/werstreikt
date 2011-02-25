@@ -1,0 +1,32 @@
+<% content_for :js do %>
+  <%= javascript_include_tag "http://www.google.com/jsapi?key=#{ CFG['api']['google'] }" %>
+  <script>
+    google.load("feeds", "1");
+
+    $(function(){
+      var items = 3;
+      var feed = new google.feeds.Feed("http://news.google.de/news?pz=1&cf=all&ned=de&hl=de&q=streik+-griechenland+-frankreich&cf=all&output=rss");
+      feed.load(function(result) {
+        if (result.error)return;
+        var $feed = $('#feed_entries');
+        for (var i = 0; i <= items; i++) {
+          var entry = result.feed.entries[i];
+          var $content = $(entry.content)
+          $feed.append(
+            '<tr>' +
+              '<td>' +
+                $content.find('td font')[0].innerHTML +
+              '</td>' +
+              '<td>' +
+                $content.find('div')[1].innerHTML +
+              '</td>' +
+            '</tr>'
+            );
+          }
+        });
+      });
+  </script>
+<% end %>
+
+<table class="w100 top_aligned" id="feed_entries">
+</table>
