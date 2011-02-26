@@ -4,10 +4,11 @@
     google.load("feeds", "1");
 
     $(function(){
+      var source = googleNewsFeed('streik OR warnstreik -griechenland -frankreich')
       var items = 3;
-      var feed = new google.feeds.Feed("http://news.google.de/news?pz=1&cf=all&ned=de&hl=de&q=streik+-griechenland+-frankreich&cf=all&output=rss");
+      var feed = new google.feeds.Feed(source);
       feed.load(function(result) {
-        if (result.error)return;
+        if (result.error){console.log(result.error)};
         var $feed = $('#feed_entries');
         for (var i = 0; i <= items; i++) {
           var entry = result.feed.entries[i];

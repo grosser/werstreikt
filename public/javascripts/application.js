@@ -15,3 +15,7 @@ String.prototype.truncate = function(to_length){
   if(to_length >= this.length)return this;
   return this.substring(0, to_length-3)+'...';
 };
+
+function googleNewsFeed(query){
+  return "http://news.google.de/news?pz=1&cf=all&ned=de&hl=de&cf=all&output=rss&q="+query.replace(' ','+')
+}
