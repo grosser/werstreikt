@@ -1,3 +1,7 @@
+b{
+  font-weight: bold;
+}
+
 .clearer{
   clear: both;
 }
@@ -17,8 +21,34 @@ table.top_aligned td{
   text-shadow: -3px 0 4px red;
   color: #d12;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 #feed_entries td{
   padding-bottom: 20px;
+}
+
+#feed_entries td:last-child{
+  padding-left: 20px;
+}
+
+body {
+  background: #000 url('/images/background.jpg') center center fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
+
+  width:900px;
+  margin:auto;
+}
+
+#content{
+  margin: 20px 0;
+  padding:10px;
+  background:white;
+}
+
+#copyright{
+  text-align: center;
+  font-size: 9px;
+  color: #696969;
 }
