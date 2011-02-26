@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Wer streikt?</title>
-  <%= stylesheet_link_tag 'reset', 'application', :cache => true %>
+  <%= stylesheet_link_tag 'reset', 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -18,7 +18,7 @@
 </div>
 
 <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' %>
-<%= javascript_include_tag 'rails', 'application', :cache => true %>
+<%= javascript_include_tag 'rails', 'application' %>
 <%= yield :js %>
 
 </body>
