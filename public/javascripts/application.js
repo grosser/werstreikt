@@ -61,7 +61,7 @@ function withFB(callback){
 
     // try to get login info -> no popup
     FB.getLoginStatus(function(response){
-      if(response){
+      if(response.session){
         FBLoginData = response.session;
         callback(FBLoginData);
       } else {
@@ -69,7 +69,7 @@ function withFB(callback){
         FB.login(function(response){
           if(response.session){
             FBLoginData = response.session;
-            callback(login);
+            callback(FBLoginData);
           } else {
             alert('Login failed');
           }
