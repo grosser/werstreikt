@@ -1,33 +1,20 @@
 <% content_for :js do %>
   <%= javascript_include_tag "http://www.google.com/jsapi?key=#{ CFG['api']['google'] }" %>
   <script>
-    google.load("feeds", "1");
-
-    $(function(){
-      var source = googleNewsFeed('streik OR warnstreik -griechenland -frankreich')
-      var items = 3;
-      var feed = new google.feeds.Feed(source);
-      feed.load(function(result) {
-        if (result.error){console.log(result.error)};
-        var $feed = $('#feed_entries');
-        for (var i = 0; i <= items; i++) {
-          var entry = result.feed.entries[i];
-          var $content = $(entry.content)
-          $feed.append(
-            '<tr>' +
-              '<td>' +
-                $content.find('td font')[0].innerHTML +
-              '</td>' +
-              '<td>' +
-                $content.find('div')[1].innerHTML +
-              '</td>' +
-            '</tr>'
-            );
-          }
-        });
-      });
+    fillWithFeedEntries('#feed_entries', 'streik OR warnstreik -griechenland -frankreich')
   </script>
 <% end %>
 
 <table class="w100 top_aligned" id="feed_entries">
 </table>
+
+
+<% content_for :js do %>
+  <script>
+    withFB(function(login){
+      $('#testid').html(login.uid)
+    })
+  </script>
+<% end %>
+
+<div id="testid"></div>
