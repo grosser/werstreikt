@@ -8,23 +8,39 @@
 <body>
 <div id="fb-root"></div>
 
-<div id="content">
+<div id="page">
+  <div id="user_navigation">
+    <% if current_user %>
+      Hallo <%= current_user.first_name %>!!
+      <%= link_to 'Abmelden', logout_users_path %>
+    <% else %>
+      <%= link_to_function 'Anmelden', 'loginWithFacebook()', :class => 'facebook_button' %>
+    <% end %>
+  </div>
+
+  <%= clearer %>
+
   <div id="title">Wer streikt!?</div>
 
-  <%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
 
   <div id="copyright">
     Background by <%= link_to 'Wolf-Dieter', 'http://commons.wikimedia.org/wiki/User:Wolf-Dieter' %>
   </div>
 </div>
 
-<script>
-  FBAppId = '<%= CFG['api']['facebook']['AppId'] %>'
-</script>
-<div id="fb-root"></div>
-
 <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' %>
-<%= javascript_include_tag 'rails', 'application' %>
+<%= javascript_include_tag 'rails', 'application', 'facebook-login' %>
+
+<div id="fb-root"></div>
+<script>
+  FBAppId = '<%=CFG['api']['facebook']['AppId']%>';
+  FBLoginUrl = '<%= new_user_url %>'
+  FBRegisterUrl = '<%= login_with_facebook_users_url %>'
+</script>
+
 <%= yield :js %>
 
 </body>

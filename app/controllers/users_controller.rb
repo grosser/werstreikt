@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :create
-
-  def create
+  def login_with_facebook
     data = load_facebook_data(params[:access_token])
     data = data.rewrite('id' => 'fb_id').slice('fb_id','first_name','last_name','email','gender')
 
@@ -11,7 +9,12 @@ class UsersController < ApplicationController
       User.create!(data)
     end
 
-    redirect_to root_path
+    redirect_to session[:redirect_after_login] || root_path
+  end
+
+  def logout
+    self.current_user = nil
+    redirect_back_or_default '/'
   end
 
   private

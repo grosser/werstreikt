@@ -1,0 +1,12 @@
+<%= link_to_function 'Mit Facebook anmelden', 'sendFBConnect()', :class => 'facebook_button', :style => 'margin:100px 0 0 300px' %>
+
+<% content_for :js do %>
+  <script>
+    // user returned from facebook login -> get access_token
+    if(document.location.search.match(/^\?code=/)){
+      $('content').html('<center><img src="/images/loading.gif" /></center>');
+      loginWithFacebook();
+    }
+  </script>
+<% end %>
+

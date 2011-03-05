@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def gender=(value)
     self.gender_id = GENDERS.index(value.to_sym).to_i
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

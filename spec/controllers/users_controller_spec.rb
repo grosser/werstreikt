@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
-  describe :create_get do
+  describe :login_with_facebook do
     before do
       User.delete_all
     end
@@ -21,21 +21,39 @@ describe UsersController do
     it "can create" do
       stub_facebook_call
       lambda{
-        post :create, :access_token => 'TOKEN'
+        post :login_with_facebook, :access_token => 'TOKEN'
       }.should change{User.count}.by(+1)
     end
 
     it "logs in a newly created user" do
       stub_facebook_call
-      post :create, :access_token => 'TOKEN'
+      post :login_with_facebook, :access_token => 'TOKEN'
       session[:user_id].should_not == nil
     end
 
     it "logs in an existing user" do
       user = Factory(:user)
       stub_facebook_call('id' => user.fb_id)
-      post :create, :access_token => 'TOKEN'
+      post :login_with_facebook, :access_token => 'TOKEN'
       session[:user_id].should == user.id
+    end
+
+    it "redirects to action before login" do
+      session[:redirect_after_login] = {:controller => 'users', :action => 'new'}
+      user = Factory(:user)
+      stub_facebook_call('id' => user.fb_id)
+      post :login_with_facebook, :access_token => 'TOKEN'
+      response.should redirect_to('/users/new')
+    end
+  end
+
+  describe :logout do
+    it "terminates the session" do
+      user = Factory(:user)
+      session[:user_id] = user.id
+      get :logout
+      session[:user_id].should == nil
+      response.should redirect_to('/')
     end
   end
 end

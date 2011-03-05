@@ -5,29 +5,7 @@
   </script>
 <% end %>
 
+<%= link_to 'Streik melden' %>
+
 <table class="w100 top_aligned" id="feed_entries">
 </table>
-
-
-<% content_for :js do %>
-  <%= javascript_include_tag 'facebook-login' %>
-  <%= js_tag 'facebook_login' %>
-  <script>
-    FBAppId = '<%=CFG['api']['facebook']['AppId']%>';
-
-    function sendFBConnect(){
-      withFB(function(session){
-        // user granted access
-        document.location.href = "/users/create_get?access_token="+session.access_token
-      })
-    }
-
-    // user returned from facebook login -> get access_token
-    if(document.location.search.match(/^\?code=/)){
-      $('content').update('<center><img src="/images/loading.gif" /></center>');
-      sendFBConnect();
-    }
-  </script>
-<% end %>
-
-<div id="testid"></div>

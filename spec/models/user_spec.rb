@@ -22,4 +22,10 @@ describe User do
       User.new(:gender => 'asdasd').gender.should == :unknown
     end
   end
+
+  describe :name do
+    it "adds first and last" do
+      User.new(:first_name => 'F', :last_name => 'L').name.should == "F L"
+    end
+  end
 end

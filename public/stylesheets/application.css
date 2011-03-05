@@ -1,3 +1,12 @@
+body {
+  background: #000 url('/images/background.jpg') center center fixed no-repeat;
+  -moz-background-size: cover;
+  background-size: cover;
+
+  width:900px;
+  margin:auto;
+}
+
 b{
   font-weight: bold;
 }
@@ -32,23 +41,34 @@ table.top_aligned td{
   padding-left: 20px;
 }
 
-body {
-  background: #000 url('/images/background.jpg') center center fixed no-repeat;
-  -moz-background-size: cover;
-  background-size: cover;
-
-  width:900px;
-  margin:auto;
-}
-
-#content{
+#page{
   margin: 20px 0;
   padding:10px;
   background:white;
+}
+
+#content{
+  min-height: 500px;
 }
 
 #copyright{
   text-align: center;
   font-size: 9px;
   color: #696969;
+}
+
+.facebook_button{
+  float:left;
+  display:block;
+  line-height: 20px;
+  padding-left: 25px;
+  padding-right: 4px;
+  background: url('/images/facebook_button.png') 0 0 no-repeat;
+  border: 1px solid #1A356E;
+  text-decoration: none;
+  color: white;
+}
+
+#user_navigation{
+  float:right;
 }

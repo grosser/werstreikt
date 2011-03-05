@@ -12,4 +12,14 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.try(:id)
     @current_user = user
   end
+
+  def login_required
+    return if current_user
+    session[:redirect_after_login] = params
+    redirect_to new_user_path, :error => "Bitte melde dich an!"
+  end
+
+  def redirect_back_or_default(default)
+    redirect_to request.headers["Referer"] || default
+  end
 end

@@ -1,4 +1,4 @@
-FBSession = null;
+FBSession = null; // cache
 function withFB(callback){
   if(FBSession) return callback(FBSession);
 
@@ -17,8 +17,7 @@ function withFB(callback){
         callback(FBSession);
       } else {
         // force login via redirect
-        var cleanUrl = "http://"+document.location.host.replace(/^[a-z]+\./,'')+document.location.pathname
-        document.location.href = "http://www.facebook.com/connect/uiserver.php?app_id="+FBAppId+"&method=permissions.request&display=page&next="+cleanUrl+"&response_type=code&perms=email"
+        document.location.href = "http://www.facebook.com/connect/uiserver.php?app_id="+FBAppId+"&method=permissions.request&display=page&next="+FBLoginUrl+"&response_type=code&perms=email"
       }
     });
   };
@@ -30,4 +29,11 @@ function withFB(callback){
       '//connect.facebook.net/de_DE/all.js';
     document.getElementById('fb-root').appendChild(e);
   }());
+}
+
+function loginWithFacebook(){
+  withFB(function(session){
+    // user granted access
+    document.location.href = FBRegisterUrl+"?access_token="+session.access_token.replace(/\|/g,'%7C')
+  })
 }
