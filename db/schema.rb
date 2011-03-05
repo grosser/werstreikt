@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20110305152225) do
 
   create_table "strikes", :force => true do |t|
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date     "start_on"
+    t.date     "end_on"
     t.integer  "creator_id",   :null => false
     t.string   "organisation", :null => false
     t.text     "comment"

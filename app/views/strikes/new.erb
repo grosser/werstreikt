@@ -8,11 +8,11 @@
     </tr>
     <tr>
       <td>Erster Tag</td>
-      <td><%= f.text_field :start_at, :class => :datepicker %></td>
+      <td><%= date_text_field f, :start_on %></td>
     </tr>
     <tr>
       <td>Letzter Tag</td>
-      <td><%= f.text_field :end_at, :class => :datepicker %></td>
+      <td><%= date_text_field f, :end_on %></td>
     </tr>
     <tr>
       <td>Kommentar</td>

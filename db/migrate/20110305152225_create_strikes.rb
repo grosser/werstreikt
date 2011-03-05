@@ -1,8 +1,8 @@
 class CreateStrikes < ActiveRecord::Migration
   def self.up
     create_table :strikes do |t|
-      t.timestamp :start_at
-      t.timestamp :end_at
+      t.date :start_on
+      t.date :end_on
       t.integer :creator_id, :null => false
       t.string :organisation, :null => false
       t.text :comment
