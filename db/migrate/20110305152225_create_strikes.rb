@@ -5,6 +5,7 @@ class CreateStrikes < ActiveRecord::Migration
       t.timestamp :end_at
       t.integer :creator_id, :null => false
       t.string :organisation, :null => false
+      t.text :comment
 
       t.timestamps
     end

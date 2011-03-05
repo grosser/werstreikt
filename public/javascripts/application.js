@@ -47,3 +47,7 @@ function fillWithFeedEntries(selector, query){
     });
   });
 }
+
+$(function() {
+  $( ".datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+})

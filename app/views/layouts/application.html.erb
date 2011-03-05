@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Wer streikt?</title>
-  <%= stylesheet_link_tag 'reset', 'application' %>
+  <%= stylesheet_link_tag 'reset', 'application', 'jquery/ui' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -22,6 +22,24 @@
 
   <div id="title">Wer streikt!?</div>
 
+  <% if flash[:error] %>
+    <div style="padding: 0 0.7em;" class="ui-state-error">
+      <p>
+        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span>
+        <%= flash[:error] %>
+      </p>
+    </div>
+    <br/><br/>
+  <% elsif flash[:notice] %>
+    <div style="margin-top: 20px; padding: 0pt 0.7em;" class="ui-state-highlight ui-corner-all">
+      <p>
+        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
+        <%= flash[:notice] %>
+      </p>
+    </div>
+    <br/><br/>
+  <% end %>
+
   <div id="content">
     <%= yield %>
   </div>
@@ -32,7 +50,7 @@
 </div>
 
 <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' %>
-<%= javascript_include_tag 'rails', 'application', 'facebook-login' %>
+<%= javascript_include_tag 'rails', 'facebook-login', 'jquery-ui.custom.min', 'application' %>
 
 <div id="fb-root"></div>
 <script>

@@ -1,0 +1,24 @@
+<h1>Neuen Streik eintragen</h1>
+
+<% form_for @strike do |f| %>
+  <table>
+    <tr>
+      <td>Es streikt</td>
+      <td><%= f.text_field :organisation %></td>
+    </tr>
+    <tr>
+      <td>Erster Tag</td>
+      <td><%= f.text_field :start_at, :class => :datepicker %></td>
+    </tr>
+    <tr>
+      <td>Letzter Tag</td>
+      <td><%= f.text_field :end_at, :class => :datepicker %></td>
+    </tr>
+    <tr>
+      <td>Kommentar</td>
+      <td><%= f.text_area :comment, :size => '40x3' %></td>
+    </tr>
+  </table>
+
+  <%= submit_tag 'Streik eintragen' %>
+<% end %>

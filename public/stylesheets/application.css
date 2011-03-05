@@ -11,6 +11,10 @@ b{
   font-weight: bold;
 }
 
+p{
+  padding: 10px;
+}
+
 .clearer{
   clear: both;
 }
@@ -71,4 +75,8 @@ table.top_aligned td{
 
 #user_navigation{
   float:right;
+}
+
+.field_with_errors input{
+  background: #f08080;
 }
