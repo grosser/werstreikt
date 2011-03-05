@@ -1,4 +1,6 @@
-<h1><%= @strike.organisation %> Streik vom <%= d @strike.start_on %> bis <%= d @strike.start_on %></h1>
+<h1><%= @strike.organisation %> Streik vom <%= d @strike.start_on %> bis <%= d @strike.end_on %></h1>
 <%= @strike.comment %>
 <br/><br/><br/>
 eingetragen von <%= link_to @strike.creator.name, "http://www.facebook.com/#!/profile.php?id=#{@strike.creator.fb_id}&v=wall" %>
+<br/><br/>
+<%= link_to 'Löschen', strike_path(@strike), :method => :delete, :confirm => 'Löschen ??' if current_user.is_owner?(@strike) %>

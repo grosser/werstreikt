@@ -33,4 +33,22 @@ describe StrikesController do
       response.should render_template('show')
     end
   end
+
+  describe :destroy do
+    it "deleted a strike" do
+      strike = Factory(:strike)
+      login_as strike.creator
+      delete :destroy, :id => strike.id
+      lambda{
+        strike.reload
+      }.should raise_error
+    end
+
+    it "does not delete if im not the owner" do
+      strike = Factory(:strike)
+      login_as Factory(:user)
+      delete :destroy, :id => strike.id
+      strike.reload
+    end
+  end
 end

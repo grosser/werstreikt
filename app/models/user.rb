@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def name
     "#{first_name} #{last_name}"
   end
+
+  def is_owner?(object)
+    object.creator_id == id
+  end
 end
