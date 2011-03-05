@@ -35,6 +35,8 @@ table.top_aligned td{
   color: #d12;
   margin-bottom: 20px;
   text-align: center;
+  display: block;
+  text-decoration: none;
 }
 
 #feed_entries td{

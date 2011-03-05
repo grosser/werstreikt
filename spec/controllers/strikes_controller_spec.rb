@@ -14,7 +14,7 @@ describe StrikesController do
 
     it "creates a new strike" do
       lambda{
-        post :create, :strike => {:start_at => '2010-10-01', :end_at => '2010-10-02', :organisation => 'GDL'}
+        post :create, :strike => {:start_on => '2010-10-01', :end_on => '2010-10-02', :organisation => 'GDL'}
       }.should change{Strike.count}.by(+1)
       Strike.last.creator.should == @user
       response.should redirect_to root_url

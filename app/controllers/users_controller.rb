@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     redirect_to session[:redirect_after_login] || root_path
+    session[:redirect_after_login] = nil
   end
 
   def logout

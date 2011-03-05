@@ -45,6 +45,14 @@ describe UsersController do
       post :login_with_facebook, :access_token => 'TOKEN'
       response.should redirect_to('/users/new')
     end
+
+    it "it removes redirect so next login is clean" do
+      session[:redirect_after_login] = {:controller => 'users', :action => 'new'}
+      user = Factory(:user)
+      stub_facebook_call('id' => user.fb_id)
+      post :login_with_facebook, :access_token => 'TOKEN'
+      session[:redirect_after_login].should == nil
+    end
   end
 
   describe :logout do
