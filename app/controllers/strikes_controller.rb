@@ -1,6 +1,10 @@
 class StrikesController < ApplicationController
   before_filter :login_required, :only => [:new, :create]
 
+  def show
+    @strike = Strike.find(params[:id])
+  end
+
   def new
     @strike = Strike.new
   end

@@ -6,4 +6,8 @@ module ApplicationHelper
   def nbsp(x=1)
     ("&nbsp;" * x).html_safe
   end
+
+  def d(date)
+    date.strftime('%d.%m.%Y') if date
+  end
 end

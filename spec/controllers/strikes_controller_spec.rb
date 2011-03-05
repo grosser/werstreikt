@@ -25,4 +25,12 @@ describe StrikesController do
       response.should render_template('new')
     end
   end
+
+  describe :show do
+    it "renders" do
+      get :show, :id => Factory(:strike).id
+      assigns[:strike].should_not == nil
+      response.should render_template('show')
+    end
+  end
 end
