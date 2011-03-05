@@ -10,10 +10,23 @@
 
 
 <% content_for :js do %>
+  <%= javascript_include_tag 'facebook-login' %>
+  <%= js_tag 'facebook_login' %>
   <script>
-    withFB(function(login){
-      $('#testid').html(login.uid)
-    })
+    FBAppId = '<%=CFG['api']['facebook']['AppId']%>';
+
+    function sendFBConnect(){
+      withFB(function(session){
+        // user granted access
+        document.location.href = "/users/create_get?access_token="+session.access_token
+      })
+    }
+
+    // user returned from facebook login -> get access_token
+    if(document.location.search.match(/^\?code=/)){
+      $('content').update('<center><img src="/images/loading.gif" /></center>');
+      sendFBConnect();
+    }
   </script>
 <% end %>
 
