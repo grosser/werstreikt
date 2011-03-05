@@ -6,6 +6,6 @@ development:
 
 production:
   api:
-    google: ABQIAAAA9rWAXwsosqg0R8Lfc9vBnhQWu2HPJdxeVhAB7gD0OqnyZmxTExS76XJGV1EQ57mMotdMgEoDRakYag # werstreikt.heroku.com
+    google: ABQIAAAA9rWAXwsosqg0R8Lfc9vBnhSZIZ6q54I5-XTOKEUHtew-Vkt3PRQ_9SMpkzyCv8nY_yPQZOtGBaM6NA # werstreikt.de
     facebook:
       AppId: '114907251917062'
