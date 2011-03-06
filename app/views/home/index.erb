@@ -8,6 +8,17 @@
 <table style="width:100%">
   <tr>
     <th></th>
+    <% @dates.each_with_index do |date,i| %>
+      <% if i == 0 or (date.day == 1 and i < @dates.size - 2) %>
+        <th><span style="position:absolute;"><%= l(date, :format => :month) %></span>&nbsp;</th>
+      <% else %>
+        <th>&nbsp;</th>
+      <% end %>
+    <% end %>
+  </tr>
+
+  <tr>
+    <th></th>
     <% @dates.each do |date| %>
       <th><%= date.strftime('%d.') %></th>
     <% end %>
