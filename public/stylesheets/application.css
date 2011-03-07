@@ -2,12 +2,19 @@ body {
   background: #000 url('/images/background.jpg') center center fixed no-repeat;
   -moz-background-size: cover;
   background-size: cover;
-
   width:900px;
   margin:auto;
+  font: 14px Verdana,Tahoma,arial,sans-serif;
 }
 
-b{
+h1{
+  font-size: 20px;
+  margin: 5px 0;
+  padding: 2px 5px 5px 5px;
+  background: white;
+}
+
+b, th{
   font-weight: bold;
 }
 
@@ -31,9 +38,8 @@ table.top_aligned td{
   font-family: Verdana, sans-serif;
   font-size: 100px;
   line-height: 100px;
-  text-shadow: -3px 0 4px red;
-  color: #d12;
-  margin-bottom: 20px;
+  text-shadow: -3px 0 4px black;
+  color: #CCC;
   text-align: center;
   display: block;
   text-decoration: none;
@@ -49,8 +55,26 @@ table.top_aligned td{
 
 #page{
   margin: 20px 0;
-  padding:10px;
-  background:white;
+  background: white;
+  padding-top: 1px;
+}
+
+#page_head, #content, #copyright, .box{
+  background: #E8E8E8;
+  margin: 10px;
+  padding: 10px;
+}
+
+.flash_notice{
+  background: #A7D101; /* for non-css3 browsers */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#AFC326', endColorstr='#C7F121'); /* for IE */
+  background: -moz-linear-gradient(top,  #A7D101,  #AFC326);
+  background: -webkit-gradient(linear, left top, left bottom, from(#A7D101), to(#C7F121));
+}
+
+.flash_error{
+  background: #cd5c5c;
 }
 
 #content{
@@ -81,4 +105,14 @@ table.top_aligned td{
 
 .field_with_errors input{
   background: #f08080;
+}
+
+.shadow {
+  -moz-box-shadow: 0px 0px 20px #000;
+  -webkit-box-shadow: 0px 0px 20px #000;
+  box-shadow: 0px 0px 20px #000;
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=135, Color='#000000')";
+  /* For IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=135, Color='#000000');
 }

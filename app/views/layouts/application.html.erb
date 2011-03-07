@@ -5,51 +5,39 @@
   <%= stylesheet_link_tag 'reset', 'application', 'jquery/ui' %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body class="shadow">
 
 <%= link_to 'http://github.com/grosser/werstreikt' do %>
-  <img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" style="position: absolute; top: 0pt; right: 0pt; border: 0pt none;">
+  <img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" style="position: absolute; top: 0pt; left: 0pt; border: 0pt none;">
 <% end %>
 
 <div id="fb-root"></div>
 
 <div id="page">
-  <div id="user_navigation">
-    <% if current_user %>
-      Hallo <%= current_user.first_name %>!!
-      <%= link_to 'Abmelden', logout_users_path %>
-    <% else %>
-      <%= link_to_function 'Anmelden', 'loginWithFacebook()', :class => 'facebook_button' %>
-    <% end %>
+  <div class="box">
+    <div id="user_navigation">
+      <% if current_user %>
+        Hallo <%= current_user.first_name %>!!
+        <%= link_to 'Abmelden', logout_users_path %>
+      <% else %>
+        <%= link_to_function 'Anmelden', 'loginWithFacebook()', :class => 'facebook_button' %>
+      <% end %>
+    </div>
+
+    <%= link_to 'Wer streikt!?', '/', :id => 'title' %>
   </div>
 
-  <%= clearer %>
-
-  <%= link_to 'Wer streikt!?', '/', :id => 'title' %>
-
-  <% if flash[:error] %>
-    <div style="padding: 0 0.7em;" class="ui-state-error">
-      <p>
-        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-alert"></span>
-        <%= flash[:error] %>
-      </p>
+  <% flash.each do |key, text| %>
+    <div class="flash_<%= key %> box">
+      <%= text %>
     </div>
-    <br/><br/>
-  <% elsif flash[:notice] %>
-    <div style="margin-top: 20px; padding: 0pt 0.7em;" class="ui-state-highlight ui-corner-all">
-      <p>
-        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
-        <%= flash[:notice] %>
-      </p>
-    </div>
-    <br/><br/>
   <% end %>
 
-  <div id="content">
+  <div id="content" class="box">
     <%= yield %>
   </div>
 
-  <div id="copyright">
+  <div id="copyright" class="box">
     Background by <%= link_to 'Wolf-Dieter', 'http://commons.wikimedia.org/wiki/User:Wolf-Dieter' %>
   </div>
 </div>

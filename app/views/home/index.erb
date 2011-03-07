@@ -6,6 +6,8 @@
 <% end %>
 
 <table style="width:100%">
+
+  <h1>Nächste Streiks</h1>
   <tr>
     <th></th>
     <% @dates.each_with_index do |date,i| %>
@@ -18,9 +20,9 @@
   </tr>
 
   <tr>
-    <th></th>
+    <td></td>
     <% @dates.each do |date| %>
-      <th><%= date.strftime('%d.') %></th>
+      <td><%= date.strftime('%d.') %></td>
     <% end %>
   </tr>
   
@@ -45,6 +47,6 @@
 
 <br/><br/><br/>
 
-
+<h1>Streik News</h1>
 <table class="w100 top_aligned" id="feed_entries">
 </table>
