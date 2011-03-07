@@ -10,4 +10,8 @@ module ApplicationHelper
   def d(date)
     date.strftime('%d.%m.%Y') if date
   end
+
+  def is_owner?(object)
+    current_user.try(:is_owner?, object)
+  end
 end
