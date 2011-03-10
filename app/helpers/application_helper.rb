@@ -22,7 +22,7 @@ module ApplicationHelper
 
   def strike_rss_url
     if Rails.env.production?
-      strikes_url(:format => :rss)
+      'http://feeds.feedburner.com/Werstreikt-Aktuelle-Streiks'
     else
       strikes_url(:format => :rss)
     end
