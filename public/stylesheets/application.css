@@ -56,7 +56,7 @@ table.top_aligned td{
 #page{
   margin: 20px 0;
   background: white;
-  padding-top: 1px;
+  padding: 1px; /* fix double-margin-bug */
 }
 
 #page_head, #content, #copyright, .box{
