@@ -7,6 +7,10 @@ class StrikesController < ApplicationController
     @strike = Strike.find(params[:id])
   end
 
+  def index
+    @strikes = Strike.in_next_days(31).to_a
+  end
+
   def new
     @strike = Strike.new
   end

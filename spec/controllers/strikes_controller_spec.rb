@@ -90,4 +90,10 @@ describe StrikesController do
       response.should render_template('edit')
     end
   end
+
+  descrie :index do
+    it "renders as rss" do
+      get :index, :format => :rss
+    end
+  end
 end

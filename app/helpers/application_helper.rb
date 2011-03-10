@@ -19,4 +19,12 @@ module ApplicationHelper
     width = options[:width] || 450
     raw %Q{<iframe src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;layout=standard&amp;show_faces=true&amp;width=#{width}&amp;action=like&amp;font&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:#{width}px; height:80px;" allowTransparency="true"></iframe>}
   end
+
+  def strike_rss_url
+    if Rails.env.production?
+      strikes_url(:format => :rss)
+    else
+      strikes_url(:format => :rss)
+    end
+  end
 end
