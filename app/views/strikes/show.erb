@@ -3,4 +3,7 @@
 <br/><br/><br/>
 eingetragen von <%= link_to @strike.creator.name, "http://www.facebook.com/#!/profile.php?id=#{@strike.creator.fb_id}&v=wall" %>
 <br/><br/>
-<%= link_to 'Löschen', strike_path(@strike), :method => :delete, :confirm => 'Löschen ??' if is_owner?(@strike) %>
+<% if is_owner?(@strike) %>
+  <%= link_to 'Ändern', edit_strike_path(@strike) %>
+  <%= link_to 'Löschen', @strike, :method => :delete, :confirm => 'Löschen ??' %>
+<% end %>

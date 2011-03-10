@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td>Es streikt</td>
+    <td><%= f.text_field :organisation %></td>
+  </tr>
+  <tr>
+    <td>Erster Tag</td>
+    <td><%= date_text_field f, :start_on %></td>
+  </tr>
+  <tr>
+    <td>Letzter Tag</td>
+    <td><%= date_text_field f, :end_on %></td>
+  </tr>
+  <tr>
+    <td>Kommentar</td>
+    <td><%= f.text_area :comment, :size => '40x3' %></td>
+  </tr>
+</table>

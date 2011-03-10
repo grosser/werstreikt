@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe StrikesController do
+  let(:strike){ Factory(:strike) }
+
   describe :new do
     it "renders" do
       get :new
@@ -28,7 +30,7 @@ describe StrikesController do
 
   describe :show do
     it "renders" do
-      get :show, :id => Factory(:strike).id
+      get :show, :id => strike.id
       assigns[:strike].should_not == nil
       response.should render_template('show')
     end
@@ -36,7 +38,6 @@ describe StrikesController do
 
   describe :destroy do
     it "deleted a strike" do
-      strike = Factory(:strike)
       login_as strike.creator
       delete :destroy, :id => strike.id
       lambda{
@@ -45,10 +46,48 @@ describe StrikesController do
     end
 
     it "does not delete if im not the owner" do
-      strike = Factory(:strike)
       login_as Factory(:user)
       delete :destroy, :id => strike.id
       strike.reload
+    end
+  end
+
+  describe :edit do
+    it "does not edit if im not the owner" do
+      login_as Factory(:user)
+      get :edit, :id => strike.id
+      response.should redirect_to(strike)
+    end
+
+    it "renders" do
+      login_as strike.creator
+      get :edit, :id => strike.id
+      response.should render_template(:edit)
+    end
+  end
+
+  describe :update do
+    it "does not edit if im not the owner" do
+      login_as Factory(:user)
+      lambda{
+        put :update, :id => strike.id, :strike => {:comment => 'xxx'}
+      }.should_not change{strike.reload.comment}
+    end
+
+    it "updates a strike" do
+      login_as strike.creator
+      lambda{
+        put :update, :id => strike.id, :strike => {:comment => 'xxx'}
+      }.should change{strike.reload.comment}
+      response.should redirect_to(strike)
+    end
+
+    it "fails to update a strike" do
+      login_as strike.creator
+      lambda{
+        put :update, :id => strike.id, :strike => {:organisation => ''}
+      }.should_not change{strike.reload.organisation}
+      response.should render_template('edit')
     end
   end
 end
