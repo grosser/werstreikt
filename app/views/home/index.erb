@@ -25,21 +25,25 @@
       <td><%= date.strftime('%d.') %></td>
     <% end %>
   </tr>
-  
-  <% @strikes.each do |organisation, strikes| %>
-    <tr>
-      <th><%= organisation %></th>
-      <% @dates.each do |date| %>
-        <% if strike = strikes.detect{|s| s.include?(date) } %>
-          <td>
-            <% title = "#{strike.organisation} vom #{strike.start_on.strftime('%d.%m.')} bis #{strike.end_on.strftime('%d.%m.')} --- #{strike.comment}" %>
-            <%= link_to nbsp, strike, :style => "background:red; display:block", :title => title %>
-          </td>
-        <% else %>
-          <td></td>
+
+  <% if @strikes.present? %>
+    <% @strikes.each do |organisation, strikes| %>
+      <tr>
+        <th><%= organisation %></th>
+        <% @dates.each do |date| %>
+          <% if strike = strikes.detect{|s| s.include?(date) } %>
+            <td>
+              <% title = "#{strike.organisation} vom #{strike.start_on.strftime('%d.%m.')} bis #{strike.end_on.strftime('%d.%m.')} --- #{strike.comment}" %>
+              <%= link_to nbsp, strike, :style => "background:red; display:block", :title => title %>
+            </td>
+          <% else %>
+            <td></td>
+          <% end %>
         <% end %>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr><td colspan="<%= @dates.size + 1 %>">Keine Streiks für die nächsten <%= @dates.size %> Tage gemeldet</td></tr>
   <% end %>
 </table>
 
