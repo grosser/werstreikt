@@ -1,4 +1,6 @@
 module ApplicationHelper
+  ALLOWED_TAGS = %w(a pre b i em)
+
   def clearer
     content_tag(:div, '', :class => 'clearer')
   end
@@ -26,5 +28,9 @@ module ApplicationHelper
     else
       strikes_url(:format => :rss)
     end
+  end
+
+  def safe(txt)
+    sanitize(txt, :tags => ALLOWED_TAGS, :attributes => %w(href)).split("\n").join("\n<br />").html_safe
   end
 end

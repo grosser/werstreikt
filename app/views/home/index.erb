@@ -33,7 +33,7 @@
         <% @dates.each do |date| %>
           <% if strike = strikes.detect{|s| s.include?(date) } %>
             <td>
-              <% title = "#{strike.organisation} vom #{strike.start_on.strftime('%d.%m.')} bis #{strike.end_on.strftime('%d.%m.')} --- #{strike.comment}" %>
+              <% title = "#{strike.organisation} vom #{strike.start_on.strftime('%d.%m.')} bis #{strike.end_on.strftime('%d.%m.')} --- #{safe(strike.comment)}" %>
               <%= link_to nbsp, strike, :style => "background:red; display:block", :title => title %>
             </td>
           <% else %>

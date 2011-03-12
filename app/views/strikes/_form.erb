@@ -15,7 +15,8 @@
 
 <label>Folgen </label>
 <div class="label_details">
-  (z.B. Zugausfälle in Berlin von 9:00 bis 10:00)
+  z.B. Zugausfälle in Berlin von 9:00 bis 10:00<br/>
+  Html erlaubt (<%= ApplicationHelper::ALLOWED_TAGS * ',' %>)
 </div>
 <%= f.text_area :comment, :size => '60x5' %><br/>
 
