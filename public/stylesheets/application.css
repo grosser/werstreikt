@@ -8,7 +8,7 @@ body {
 }
 
 h1{
-  font-size: 20px;
+  font-size: 25px;
   margin: 5px 0;
   padding: 2px 5px 5px 5px;
   background: white;
@@ -32,6 +32,10 @@ p{
 
 table.top_aligned td{
   vertical-align: top;
+}
+
+input{
+  font-size: 20px;
 }
 
 #title{
@@ -115,4 +119,27 @@ table.top_aligned td{
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=135, Color='#000000')";
   /* For IE 5.5 - 7 */
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=135, Color='#000000');
+}
+
+.full_form label{
+  margin-top: 12px;
+  display: block;
+  font-size: 20px;
+}
+
+.full_form input{
+  font-size: 20px;
+}
+
+.full_form input[type=submit]{
+  margin-top: 20px;
+}
+
+.full_form .datepicker{
+  width: 120px;
+}
+
+.full_form .date_wrapper{
+  width: 160px;
+  float: left;
 }

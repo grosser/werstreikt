@@ -1,18 +1,20 @@
-<table>
-  <tr>
-    <td>Es streikt</td>
-    <td><%= f.text_field :organisation %></td>
-  </tr>
-  <tr>
-    <td>Erster Tag</td>
-    <td><%= date_text_field f, :start_on %></td>
-  </tr>
-  <tr>
-    <td>Letzter Tag</td>
-    <td><%= date_text_field f, :end_on %></td>
-  </tr>
-  <tr>
-    <td>Kommentar</td>
-    <td><%= f.text_area :comment, :size => '40x3' %></td>
-  </tr>
-</table>
+<label>Es wird bestreikt</label>
+<%= f.text_field :organisation %><br/>
+
+<div>
+  <div class="date_wrapper">
+    <label>Erster Tag</label>
+    <%= date_text_field f, :start_on %><br/>
+  </div>
+  <div class="date_wrapper">
+    <label>Letzter Tag</label>
+    <%= date_text_field f, :end_on %><br/>
+  </div>
+  <%= clearer %>
+</div>
+
+<label>Folgen </label>
+<div class="label_details">
+  (z.B. Zugausfälle in Berlin von 9:00 bis 10:00)
+</div>
+<%= f.text_area :comment, :size => '60x5' %><br/>
