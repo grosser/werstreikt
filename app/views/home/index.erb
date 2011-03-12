@@ -34,7 +34,7 @@
           <% if strike = strikes.detect{|s| s.include?(date) } %>
             <td>
               <% title = "#{strike.organisation} vom #{strike.start_on.strftime('%d.%m.')} bis #{strike.end_on.strftime('%d.%m.')} --- #{safe(strike.comment)}" %>
-              <%= link_to nbsp, strike, :style => "background:red; display:block", :title => title %>
+              <%= link_to nbsp, strike, :style => "background:red; display:block", :title => title, :class => 'strike_indicator' %>
             </td>
           <% else %>
             <td></td>
@@ -54,3 +54,9 @@
 <h1>Streik News</h1>
 <table class="w100 top_aligned" id="feed_entries">
 </table>
+
+<% content_for :js do %>
+  <script>
+    $('.strike_indicator').simpleTooltip();
+  </script>
+<% end %>
