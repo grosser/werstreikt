@@ -7,6 +7,10 @@ class Strike < ActiveRecord::Base
 
   scope :in_next_days, lambda{|days| where("start_on <= ? and ? <= end_on", Date.today+days, Date.today) }
 
+  def self.organisations
+    all(:select => 'distinct organisation').map(&:organisation).sort
+  end
+
   def include?(date)
     start_on <= date and date <= end_on 
   end

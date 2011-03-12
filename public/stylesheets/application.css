@@ -138,7 +138,6 @@ table.top_aligned td{
   font-size: 0.7em;
 }
 
-
 .full_form .datepicker{
   width: 10em;
 }
@@ -146,4 +145,18 @@ table.top_aligned td{
 .full_form .date_wrapper{
   width: 11em;
   float: left;
+}
+
+input.datepicker{
+  background: Window url('/images/fam/calendar.png') right center no-repeat;
+  background-color: #fff;
+}
+
+input.autocomplete {
+  background: Window url('/images/fam/book_next.png') right center no-repeat;
+  background-color: #fff;
+}
+
+.ui-autocomplete{
+  width: 10em;
 }

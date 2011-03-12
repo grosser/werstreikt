@@ -1,5 +1,5 @@
 <label>Es wird bestreikt</label>
-<%= f.text_field :organisation %><br/>
+<%= f.text_field :organisation, :class => :autocomplete %><br/>
 
 <div>
   <div class="date_wrapper">
@@ -18,3 +18,12 @@
   (z.B. Zugausfälle in Berlin von 9:00 bis 10:00)
 </div>
 <%= f.text_area :comment, :size => '60x5' %><br/>
+
+<% content_for :js do %>
+  <script>
+    $("#strike_organisation").autocomplete({
+        source: <%= raw Strike.organisations.to_json %>,
+        minLength: 0
+    });
+  </script>
+<% end %>
