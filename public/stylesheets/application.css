@@ -8,9 +8,9 @@ body {
 }
 
 h1{
-  font-size: 25px;
-  margin: 5px 0;
-  padding: 2px 5px 5px 5px;
+  font-size: 200%;
+  margin: 0.5em 0;
+  padding: 0.2em;
   background: white;
 }
 
@@ -19,7 +19,7 @@ b, th{
 }
 
 p{
-  padding: 10px;
+  padding: 1em;
 }
 
 .clearer{
@@ -32,10 +32,6 @@ p{
 
 table.top_aligned td{
   vertical-align: top;
-}
-
-input{
-  font-size: 20px;
 }
 
 #title{
@@ -121,25 +117,33 @@ input{
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=20, Direction=135, Color='#000000');
 }
 
+.full_form{
+  font-size: 150%;
+}
+
 .full_form label{
-  margin-top: 12px;
+  margin-top: 1em;
   display: block;
-  font-size: 20px;
 }
 
 .full_form input{
-  font-size: 20px;
+  font-size:inherit;
 }
 
 .full_form input[type=submit]{
-  margin-top: 20px;
+  margin-top: 1em;
 }
 
+.full_form .label_details{
+  font-size: 0.7em;
+}
+
+
 .full_form .datepicker{
-  width: 120px;
+  width: 10em;
 }
 
 .full_form .date_wrapper{
-  width: 160px;
+  width: 11em;
   float: left;
 }
