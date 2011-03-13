@@ -91,7 +91,7 @@ describe StrikesController do
     end
   end
 
-  descrie :index do
+  describe :index do
     it "renders as rss" do
       get :index, :format => :rss
     end
