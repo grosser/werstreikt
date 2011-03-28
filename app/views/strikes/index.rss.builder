@@ -8,7 +8,7 @@ xml.rss :version => "2.0" do
     for strike in @strikes
       xml.item do
         xml.title strike_summary(strike)
-        xml.description strike.comment
+        xml.description strike.comment << "<br/><br/>" << formatted_strike_source(strike.source)
         xml.pubDate strike.created_at.to_s(:rfc822)
         xml.link url_for(strike)
         xml.guid url_for(strike)

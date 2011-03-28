@@ -1,5 +1,5 @@
 class Strike < ActiveRecord::Base
-  attr_accessible :start_on, :end_on, :organisation, :comment
+  attr_accessible :start_on, :end_on, :organisation, :comment, :source
 
   validates_presence_of :start_on, :end_on, :organisation, :creator_id
 

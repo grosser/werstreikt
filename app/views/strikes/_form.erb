@@ -20,6 +20,9 @@
 </div>
 <%= f.text_area :comment, :size => '60x5' %><br/>
 
+<label>Quelle (Url oder z.B. Tagesthemen)</label>
+<%= f.text_field :source %><br/>
+
 <% content_for :js do %>
   <script>
     $("#strike_organisation").autocomplete({

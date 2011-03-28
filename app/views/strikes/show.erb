@@ -1,6 +1,8 @@
 <h1><%= strike_summary(@strike) %></h1>
 <%= safe @strike.comment %>
-<br/><br/><br/>
+<br/><br/>
+<%= formatted_strike_source(@strike.source) %>
+<br/><br/>
 eingetragen von <%= link_to @strike.creator.name, "http://www.facebook.com/#!/profile.php?id=#{@strike.creator.fb_id}&v=wall" %>
 <br/><br/>
 <% if is_owner?(@strike) %>
