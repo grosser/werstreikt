@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /@/
   validates_inclusion_of :gender_id, :in => GENDERS.keys
 
+  before_create :generate_remember_token
+
   def gender
     GENDERS[gender_id]
   end
@@ -19,5 +21,9 @@ class User < ActiveRecord::Base
 
   def is_owner?(object)
     object.creator_id == id
+  end
+
+  def generate_remember_token
+    self.remember_token = Digest::SHA2.hexdigest("remember_token-#{Time.now.to_f}")
   end
 end

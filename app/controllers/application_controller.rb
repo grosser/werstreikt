@@ -4,12 +4,17 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id])
+    @current_user ||= if session[:user_id]
+      User.find_by_id(session[:user_id])
+    elsif cookies.include? :remember_token
+      User.find_by_remember_token(cookies.fetch(:remember_token, nil))
+    end
   end
   helper_method :current_user
 
   def current_user=(user)
     session[:user_id] = user.try(:id)
+    cookies[:remember_token] = { :value => user.try(:remember_token), :expires => 31.days.from_now }
     @current_user = user
   end
 

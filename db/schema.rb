@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110328181413) do
+ActiveRecord::Schema.define(:version => 20110328195528) do
 
   create_table "strikes", :force => true do |t|
     t.date     "start_on"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(:version => 20110328181413) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "fb_id"
-    t.integer  "gender_id",  :default => 0, :null => false
+    t.integer  "gender_id",      :default => 0, :null => false
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
   add_index "users", ["fb_id"], :name => "index_users_on_fb_id", :unique => true

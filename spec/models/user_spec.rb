@@ -28,4 +28,28 @@ describe User do
       User.new(:first_name => 'F', :last_name => 'L').name.should == "F L"
     end
   end
+
+  describe :remember_token do
+    it "is generated when none exists" do
+      user = Factory.build(:user, :remember_token => nil)
+      user.save!
+      user.remember_token.size.should == 40
+    end
+
+    it "is different each time" do
+      user = Factory.build(:user, :remember_token => nil)
+      user2 = Factory.build(:user, :remember_token => nil)
+      user.save!
+      user2.save!
+      user.remember_token.should_not == user2.remember_token
+    end
+
+    it "does not change" do
+      user = Factory.build(:user, :remember_token => nil)
+      user.save!
+      lambda{
+        user.save
+      }.should_not change{user.reload.remember_token}
+    end
+  end
 end

@@ -4,6 +4,7 @@ Factory.define(:user) do |f|
   f.fb_id{rand(9999999999999).to_s}
   f.email{"fake-#{rand(99999)}@gmail.com"}
   f.gender :male
+  f.remember_token 'a321321122141243232532'
 end
 
 Factory.define(:strike) do |f|
